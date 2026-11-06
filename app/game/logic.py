@@ -1,7 +1,5 @@
 from json import dumps
 
-from storage import load_word as load
-
 def create_base_states(word: str, description: str) -> dict[str, any]:
     return {
         "secret_word": word,
@@ -30,18 +28,3 @@ def update_states(states: dict[str, any], letter: str) -> None:
 
     if states["attempts"] <= 0:
         states["is_over"] = True
-
-if __name__ == "__main__":
-    states = create_base_states()
-
-    for letter in ["а", "б", "в", "г", "д", "и", "е", "ё", "ж", "з"]:
-        update_states(states, letter)
-        print(" ".join(states["display_word"]), states["attempts"], states["is_win"], states["is_over"])
-
-        if states["is_over"] and states["is_win"]:
-            print("win")
-            break
-
-        if states["is_over"]:
-            print("over")
-            break

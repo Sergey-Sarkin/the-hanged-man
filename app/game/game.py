@@ -1,6 +1,4 @@
-import storage
-import logic
-import ui
+from . import storage, logic, ui
 
 def game_loop() -> None:
     word_dict = storage.load_word()
@@ -22,7 +20,3 @@ def game_loop() -> None:
         else:
             print("Поражение")
             return
-
-if __name__ == "__main__":
-    game_loop()
-            

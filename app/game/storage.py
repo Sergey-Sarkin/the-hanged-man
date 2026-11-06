@@ -20,9 +20,3 @@ def load_word() -> dict[str, str]:
             }
 
     return choice(words)
-
-if __name__ == "__main__":
-    word = load_word()
-    json_string = dumps(word, indent=4, ensure_ascii=False)
-
-    print(json_string)
