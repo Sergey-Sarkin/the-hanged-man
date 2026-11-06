@@ -2,12 +2,7 @@ from json import dumps
 
 from storage import load_word as load
 
-def create_base_states() -> dict[str, any]:
-    word_dict = load()
-
-    word = word_dict["word"]
-    description = word_dict["description"]
-
+def create_base_states(word: str, description: str) -> dict[str, any]:
     return {
         "secret_word": word,
         "display_word": ["_"] * len(word),
