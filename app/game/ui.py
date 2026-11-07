@@ -19,10 +19,8 @@ def read_letter() -> str:
     print(letter)
     return letter
 
-def check_win(states: dict) -> bool:
+def check_win(states: dict) -> None:
     if states["is_win"]:
         print("Победа")
     else:
         print("Поражение")
-
-    return states["is_win"]
