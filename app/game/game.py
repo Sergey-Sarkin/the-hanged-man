@@ -18,9 +18,6 @@ def game_loop() -> None:
             utils.clear_cmd()
             logic.update_states(states, letter)
 
-        if states["is_win"]:
-            print("Победа")
-            return
-        else:
-            print("Поражение")
-            return
+        is_win = ui.check_win(states)
+
+        return
