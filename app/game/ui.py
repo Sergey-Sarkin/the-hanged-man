@@ -1,5 +1,7 @@
 from readchar import readkey
 
+RUSSIAN_ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+
 def display(states: dict) -> None:
     print(f"Подсказка: {states['description']}")
     print(f"Слово: {' '.join(states['display_word'])}")
@@ -7,6 +9,12 @@ def display(states: dict) -> None:
 
 def read_letter() -> str:
     print(f"Введите букву: ", end='', flush=True)
-    letter = readkey().lower().strip()
+
+    while True:
+        letter = readkey().lower().strip()
+
+        if letter in RUSSIAN_ALPHABET:
+            break
+        
     print(letter)
     return letter
