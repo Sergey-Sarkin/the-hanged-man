@@ -15,6 +15,14 @@ def read_letter() -> str:
 
         if letter in RUSSIAN_ALPHABET:
             break
-        
+
     print(letter)
     return letter
+
+def check_win(states: dict) -> bool:
+    if states["is_win"]:
+        print("Победа")
+    else:
+        print("Поражение")
+
+    return states["is_win"]
