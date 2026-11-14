@@ -1,4 +1,5 @@
-from . import logic, storage, ui
+from .storage import Storage
+from . import logic, ui
 import utils
 
 def game_loop() -> None:
@@ -6,7 +7,7 @@ def game_loop() -> None:
     
     utils.clear_cmd()
 
-    word_dict = storage.load_word()
+    word_dict = Storage.load_word()
     
     word = word_dict["word"]
     description = word_dict["description"]
