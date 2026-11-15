@@ -1,34 +1,38 @@
 from readchar import readkey
 
-RUSSIAN_ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+class UI:
+    _RUSSIAN_ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 
-def display(states: dict) -> None:
-    """Display game"""
+    @staticmethod
+    def display(states: dict[str, str | int | bool | list[str]]) -> None:
+        """Display game"""
 
-    print(f"Подсказка: {states['description']}")
-    print(f"Слово: {' '.join(states['display_word'])}")
-    print(f"Попытки: {states['attempts']}")
+        print(f"Подсказка: {states['description']}")
+        print(f"Слово: {' '.join(states['display_word'])}")
+        print(f"Попытки: {states['attempts']}")
 
-def read_letter() -> str:
-    """Read letter"""
+    @classmethod 
+    def read_letter(cls) -> str:
+        """Read letter"""
 
-    print(f"Введите букву: ", end='', flush=True)
+        print("Введите букву: ", end="", flush=True)
 
-    while True:
-        letter = readkey().lower().strip()
+        while True:
+            letter = readkey().lower().strip()
 
-        if letter in RUSSIAN_ALPHABET:
-            break
+            if len(letter) == 1 and letter in cls._RUSSIAN_ALPHABET:
+                break 
 
-    print(letter)
-    return letter
+        print(letter)
+        return letter
 
-def check_win(states: dict) -> None:
-    """Cheke win"""
+    @staticmethod
+    def check_win(states: dict[str, str | int | bool | list[str]]) -> None:
+        """Check win"""
     
-    if states["is_win"]:
-        print("Победа!")
-    else:
-        print("Поражение!")
+        if states["is_win"]:
+            print("Победа!")
+        else:
+            print(f"Поражение! Загаданное слово '{states['secret_word']}'")
 
-    input("Нажмите Enter, чтобы продолжить!")
+        input("Нажмите Enter, чтобы продолжить!")

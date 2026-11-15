@@ -1,6 +1,6 @@
 from .storage import Storage
 from .logic import Logic
-from . import ui
+from .ui import UI
 import utils
 
 def game_loop() -> None:
@@ -18,13 +18,13 @@ def game_loop() -> None:
 
     while True:
         while not states["is_over"]:
-            ui.display(states)
-            letter = ui.read_letter()
+            UI.display(states)
+            letter = UI.read_letter()
 
             utils.clear_cmd()
             Logic.update_states(states, letter)
 
-        is_win = ui.check_win(states)
+        is_win = UI.check_win(states)
 
         utils.clear_cmd()
 
