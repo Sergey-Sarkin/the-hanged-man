@@ -1,11 +1,11 @@
 from game import Game
 from menu import menu
-import utils
+from utils import Utils
 
 def main():
     """Main function"""
     
-    utils.clear_cmd()
+    Utils.clear_cmd()
     while True:
         match menu():
             case 0:

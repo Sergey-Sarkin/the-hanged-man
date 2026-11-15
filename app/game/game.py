@@ -1,4 +1,4 @@
-import utils
+from utils import Utils
 from .storage import Storage
 from .logic import Logic
 from .ui import UI
@@ -6,24 +6,28 @@ from .ui import UI
 class Game:
     @staticmethod
     def _loop(states: dict[str, str | int | bool | list[str]]) -> None:
+        """Game loop"""
+
         while not states["is_over"]:
             UI.display(states)
             letter = UI.read_letter()
                 
-            utils.clear_cmd()
+            Utils.clear_cmd()
             Logic.update_states(states, letter)
 
     @classmethod
     def _game_loop(cls, states: dict[str, str | int | bool | list[str]]) -> None:
+        """Game game loop"""
+
         cls._loop(states) 
         UI.check_win(states)
-        utils.clear_cmd()
+        Utils.clear_cmd()
 
     @classmethod
     def game(cls) -> None:
-        """Game loop"""
+        """Game game"""
             
-        utils.clear_cmd()
+        Utils.clear_cmd()
         
         word_dict = Storage.load_word()
             
