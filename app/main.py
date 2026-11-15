@@ -1,4 +1,4 @@
-from game import game
+from game import Game
 from menu import menu
 import utils
 
@@ -9,7 +9,7 @@ def main():
     while True:
         match menu():
             case 0:
-                game()
+                Game.game()
             case 1:
                 return
 

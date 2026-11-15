@@ -1,3 +1,3 @@
-from .game import game_loop as game
+from .game import Game
 
-__all__ = ["game"]
+__all__ = ["Game"]
