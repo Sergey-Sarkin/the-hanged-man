@@ -1,4 +1,4 @@
-from json import load
+from json import JSONDecodeError, load
 from pathlib import Path
 from random import choice
 import sys
@@ -26,11 +26,11 @@ class Storage:
             path_dir = cls._get_path_dir()
             path_file = path_dir / "data" / "words.json"
 
-            if not path_file.exists():
-                cls._words = []
-            else:
+            try:
                 with path_file.open("r", encoding="utf-8") as file:
                     cls._words = load(file)
+            except (FileNotFoundError, JSONDecodeError):
+                cls._words = []
 
         if not cls._words:
             return cls._DEFAULT_WORD.copy()
