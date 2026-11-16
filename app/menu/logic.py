@@ -6,7 +6,7 @@ class Logic:
     _DOWN = key.DOWN
 
     @staticmethod
-    def create_base_states() -> dict[str: int, str: bool]:
+    def create_base_states() -> dict[str: int | bool]:
         """Create base menu states"""
 
         return {
@@ -15,7 +15,7 @@ class Logic:
         }
 
     @classmethod
-    def get_point(cls, menu_list: list[str], states: dict[str: int, str: bool]) -> None:
+    def get_point(cls, menu_list: list[str], states: dict[str: int | bool]) -> None:
         """Return poin menu"""
 
         pressed_key = read()
@@ -23,15 +23,9 @@ class Logic:
         if pressed_key == cls._ENTER:
             states['is_enter'] = True
         elif pressed_key == cls._UP:
-            if states['point'] == 0:
-                states['point'] = len(menu_list) - 1
-            else:
-                states['point'] -= 1
+            states["point"] = (states["point"] - 1) % len(menu_list)
         elif pressed_key == cls._DOWN:
-            if states['point'] == len(menu_list) - 1:
-                states['point'] = 0
-            else:
-                states['point'] += 1
+            states["point"] = (states["point"] + 1) % len(menu_list)
 
     
 

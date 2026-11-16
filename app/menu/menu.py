@@ -1,5 +1,5 @@
 from .logic import Logic
-from . import ui
+from .ui import UI
 from utils import Utils
 
 def menu_loop() -> int:
@@ -9,7 +9,7 @@ def menu_loop() -> int:
     menu_list = ["Играть", "Выйти"]
 
     while not states['is_enter']:
-        ui.display_menu(menu_list, states['point'])
+        UI.display_menu(menu_list, states['point'])
         Logic.get_point(menu_list, states)
         Utils.clear_cmd()
 
