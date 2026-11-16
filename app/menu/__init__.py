@@ -1,3 +1,3 @@
-from .menu import menu_loop as menu
+from .menu import Menu
 
-__all__ = ["menu"]
+__all__ = ["Menu"]

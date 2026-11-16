@@ -2,15 +2,30 @@ from .logic import Logic
 from .ui import UI
 from utils import Utils
 
-def menu_loop() -> int:
-    """Menu loop"""
+class Menu:
+    @staticmethod
+    def menu_loop() -> int:
+        """Menu loop"""
+        
+        states = Logic.create_base_states()
+        menu_list = ["Играть", "Выйти"]
+        
+        while not states['is_enter']:
+            UI.display_menu(menu_list, states['point'])
+            Logic.get_point(menu_list, states)
+            Utils.clear_cmd()
+        
+        return states['point']
 
-    states = Logic.create_base_states()
-    menu_list = ["Играть", "Выйти"]
+# def menu_loop() -> int:
+#     """Menu loop"""
 
-    while not states['is_enter']:
-        UI.display_menu(menu_list, states['point'])
-        Logic.get_point(menu_list, states)
-        Utils.clear_cmd()
+#     states = Logic.create_base_states()
+#     menu_list = ["Играть", "Выйти"]
 
-    return states['point']
+#     while not states['is_enter']:
+#         UI.display_menu(menu_list, states['point'])
+#         Logic.get_point(menu_list, states)
+#         Utils.clear_cmd()
+
+#     return states['point']

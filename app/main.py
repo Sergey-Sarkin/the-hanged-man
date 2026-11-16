@@ -1,5 +1,5 @@
 from game import Game
-from menu import menu
+from menu import Menu
 from utils import Utils
 
 def main():
@@ -7,7 +7,7 @@ def main():
     
     Utils.clear_cmd()
     while True:
-        match menu():
+        match Menu.menu_loop():
             case 0:
                 Game.game()
             case 1:
